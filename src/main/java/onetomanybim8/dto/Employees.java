@@ -2,6 +2,7 @@ package onetomanybim8.dto;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -10,6 +11,7 @@ public class Employees {
 	private int id;
 	private String name;
 	private String address;
+	@JoinColumn
 	@ManyToOne
 	private Company company;
 	public int getId() {

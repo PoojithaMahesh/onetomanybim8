@@ -8,6 +8,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import onetomanybim8.dao.CompanyDao;
+import onetomanybim8.dao.EmployeeDao;
 import onetomanybim8.dto.Company;
 import onetomanybim8.dto.Employees;
 
@@ -43,5 +45,16 @@ public static void main(String[] args) {
 	entityManager.persist(employees2);
 	entityManager.persist(company);
 	entityTransaction.commit();
+	
+	
+//	
+//	CompanyDao companyDao=new CompanyDao();
+//	companyDao.deleteCompany(1);
+	
+//	EmployeeDao dao=new  EmployeeDao();
+//	dao.deleteEmployee(1);
+	
+	
+	
 }
 }

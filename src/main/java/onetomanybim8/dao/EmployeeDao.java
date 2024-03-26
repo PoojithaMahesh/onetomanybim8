@@ -1,5 +1,7 @@
 package onetomanybim8.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
@@ -45,8 +47,10 @@ public class EmployeeDao {
 		Employees dbEmployees=entityManager.find(Employees.class, id);
 		if(dbEmployees!=null) {
 			entityTransaction.begin();
-			
-			
+			Company dbCompany=dbEmployees.getCompany();
+			List<Employees> employees=dbCompany.getEmployees();
+			employees.remove(dbEmployees);
+			dbCompany.setEmployees(employees);
 			entityManager.remove(dbEmployees);
 			entityTransaction.commit();
 		}else {

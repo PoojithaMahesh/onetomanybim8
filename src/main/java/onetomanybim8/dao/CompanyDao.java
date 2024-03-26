@@ -1,10 +1,13 @@
 package onetomanybim8.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import onetomanybim8.dto.Company;
+import onetomanybim8.dto.Employees;
 
 public class CompanyDao {
 
@@ -45,8 +48,10 @@ public class CompanyDao {
 		Company dbCompany=entityManager.find(Company.class, id);
 		if(dbCompany!=null) {
 			entityTransaction.begin();
-			
-			
+			List<Employees> employees=dbCompany.getEmployees();
+			for(Employees em:employees) {
+				em.setCompany(null);
+			}
 			entityManager.remove(dbCompany);
 			entityTransaction.commit();
 		}else {
